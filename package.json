@@ -1,0 +1,10 @@
+{
+  "name": "gravedad-contenida",
+  "version": "0.1.0",
+  "description": "Qué cambia (y qué no) con la forma del recipiente: efecto Janssen y fuerzas de marea",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test"
+  }
+}
