@@ -1,10 +1,16 @@
 {
-  "name": "gravedad-contenida",
+  "name": "gravity-in-a-box",
   "version": "0.1.0",
-  "description": "Qué cambia (y qué no) con la forma del recipiente: efecto Janssen y fuerzas de marea",
+  "description": "Efecto Janssen en silos y fuerzas de marea en una caja cerrada, con números concretos.",
   "private": true,
   "license": "MIT",
   "scripts": {
     "test": "node --test"
-  }
+  },
+  "homepage": "https://loiaconobruno.github.io/gravity-in-a-box/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoiaconoBruno/gravity-in-a-box.git"
+  },
+  "author": "Bruno Loiacono"
 }

@@ -1,4 +1,19 @@
-# Gravedad contenida
+<div align="center">
+
+# Gravity in a Box
+
+**Gravedad contenida.** Qué cambia (y qué no) con la forma del recipiente: el efecto Janssen en un tubo de arroz y las fuerzas de marea en el ascensor de Einstein.
+
+[**▶ Probala en vivo**](https://loiaconobruno.github.io/gravity-in-a-box/) · [Cómo funciona](#cómo-funciona) · [Limitaciones](#limitaciones)
+
+[![Tests](https://github.com/LoiaconoBruno/gravity-in-a-box/actions/workflows/tests.yml/badge.svg)](https://github.com/LoiaconoBruno/gravity-in-a-box/actions/workflows/tests.yml)
+![Dependencias: 0](https://img.shields.io/badge/dependencias-0-brightgreen)
+![HTML, CSS y JavaScript](https://img.shields.io/badge/HTML%20%C2%B7%20CSS%20%C2%B7%20JS-sin%20build-f7df1e)
+[![Licencia MIT](https://img.shields.io/badge/licencia-MIT-blue)](LICENSE)
+
+<img src="docs/captura.png" alt="Captura de Gravity in a Box" width="800">
+
+</div>
 
 Página interactiva que separa las dos preguntas de la idea "escala vertical y gravedad contenida" y responde la física: **¿la forma de un recipiente cambia cómo actúa la gravedad adentro?**
 
@@ -13,11 +28,23 @@ La idea original mezcla percepción y física. Separarlas es lo que la hace avan
 
 ## Instalación
 
-No hace falta instalar nada. Es una página estática sin dependencias. Para correr los tests hace falta Node 18 o más nuevo.
+No hace falta instalar nada: **[abrila en el navegador](https://loiaconobruno.github.io/gravity-in-a-box/)**.
+
+Para usarla sin conexión o modificarla:
+
+```bash
+git clone https://github.com/LoiaconoBruno/gravity-in-a-box.git
+```
+
+Después abrí `index.html` con doble clic. No hay dependencias ni paso de build. Para correr los tests hace falta Node 18 o más nuevo:
+
+```bash
+npm test
+```
 
 ## Uso
 
-Abrí `index.html` con doble clic.
+Abrí la [demo en vivo](https://loiaconobruno.github.io/gravity-in-a-box/) o `index.html` con doble clic.
 
 Ejemplo:
 
