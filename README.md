@@ -4,7 +4,7 @@
 
 **Gravedad contenida.** Qué cambia (y qué no) con la forma del recipiente: el efecto Janssen en un tubo de arroz y las fuerzas de marea en el ascensor de Einstein.
 
-[**▶ Probala en vivo**](https://loiaconobruno.github.io/gravity-in-a-box/) · [Cómo funciona](#cómo-funciona) · [Limitaciones](#limitaciones)
+[**▶ Probala en vivo**](https://loiaconobruno.github.io/gravity-in-a-box/) · [**📄 Paper y guía**](https://loiaconobruno.github.io/gravity-in-a-box/guia.html) · [Cómo funciona](#cómo-funciona) · [Limitaciones](#limitaciones)
 
 [![Tests](https://github.com/LoiaconoBruno/gravity-in-a-box/actions/workflows/tests.yml/badge.svg)](https://github.com/LoiaconoBruno/gravity-in-a-box/actions/workflows/tests.yml)
 ![Dependencias: 0](https://img.shields.io/badge/dependencias-0-brightgreen)
@@ -89,6 +89,10 @@ npm test
 - Hacer el experimento casero con arroz y una balanza de cocina, y ajustar μ y K a lo medido.
 - Diseñar la prueba de percepción: estimar distancias adentro de cajas de distintas proporciones (habitación de Ames).
 - Escribir la pregunta central en una sola oración y decidir el formato: ensayo con experimentos o serie de videos cortos.
+
+## Paper de uso y guía
+
+[`guia.html`](https://loiaconobruno.github.io/gravity-in-a-box/guia.html) (fuente en [`docs/guia.md`](docs/guia.md)) tiene un paper de uso paso a paso y una guía de unas 20 páginas sobre la idea de fondo, con citas a los especialistas del tema.
 
 ## Licencia
 
