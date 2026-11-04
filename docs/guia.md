@@ -380,7 +380,47 @@ La idea original también preguntaba cómo **se siente** un espacio alto o angos
 
 En la percepción de la vertical intervienen el sistema vestibular (los otolitos del oído interno son, literalmente, acelerómetros que no distinguen gravedad de aceleración, el principio de equivalencia en biología) y la vista. Herman Witkin y Solomon Asch mostraron en 1948 con la prueba de la varilla y el marco que un marco inclinado desvía el juicio de la vertical. Esa es la puerta para un próximo experimento: no sobre la gravedad sino sobre cómo un recipiente cambia **lo que creemos** que hace la gravedad.
 
-### 19. Del modelo al código
+### 19. Medir la gravedad y sus diferencias
+
+La tarjeta de la caja calcula diferencias de g de partes por millón o por diez millones. ¿Se pueden medir? Sí, y la historia de cómo se llegó a hacerlo es la historia de la precisión en física.
+
+#### 19.1 Del péndulo al gravímetro
+
+Durante dos siglos, g se midió con péndulos: el período de un péndulo depende de su largo y de g, así que midiendo uno se obtiene la otra. El problema es saber con precisión el largo efectivo de un péndulo real. Henry Kater lo resolvió en 1818 (*Philosophical Transactions of the Royal Society*, 108, 33–102) con el **péndulo reversible**: un péndulo con dos puntos de suspensión que, ajustados para que el período sea el mismo colgando de cualquiera de los dos, tiene un largo efectivo igual a la distancia entre ellos, que se puede medir con una regla. Con péndulos de Kater se hicieron los grandes relevamientos de g del siglo XIX.
+
+En el siglo XX llegaron los **gravímetros absolutos** de caída libre: un espejo cae dentro de una cámara de vacío y un interferómetro láser mide su posición millones de veces durante la caída. Los modelos comerciales alcanzan precisiones de unos pocos microgales (un microgal es 10⁻⁸ m/s², una parte en mil millones de g). En 1999, Achim Peters, Keng Yeow Chung y Steven Chu midieron g dejando caer **átomos** enfriados con láser y usando su naturaleza ondulatoria en un interferómetro atómico, con una precisión de unas pocas partes en mil millones (*Nature*, 400, 849–852). Chu había recibido el Premio Nobel en 1997 por el enfriamiento de átomos con láser.
+
+#### 19.2 El gradiente vertical, en números
+
+Con un gravímetro de esa precisión, la diferencia entre el piso y el techo de la caja de la herramienta se mide sin dificultad. El cálculo de la herramienta da Δg/g = 2h/r, es decir, una variación de g por metro de altura de 2g/r ≈ 2 · 9,81 / 6 371 000 ≈ 3,08 × 10⁻⁶ s⁻². Los geofísicos usan para esto el **gradiente de aire libre**, cuyo valor estándar es 0,3086 miligales por metro: 3,086 × 10⁻⁶ s⁻², el mismo número. En la unidad que se usa para los gradientes, el **eötvös** (10⁻⁹ s⁻², en honor a Loránd Eötvös), son unos 3086 eötvös.
+
+Que el número del manual coincida con el de la herramienta no es casualidad: es la misma cuenta, la derivada de GM/r². Las diferencias respecto de ese valor (porque la Tierra no es una esfera perfecta y su densidad no es uniforme) son las que interesan a la geofísica: una montaña, una cueva, un yacimiento de minerales densos o un acuífero cambian el gradiente local.
+
+#### 19.3 Gradiómetros en órbita
+
+Entre 2009 y 2013, la Agencia Espacial Europea operó el satélite **GOCE** (*Gravity field and steady-state Ocean Circulation Explorer*), cuyo instrumento principal era un **gradiómetro**: seis acelerómetros de altísima sensibilidad dispuestos en pares a lo largo de tres ejes, separados unos 50 centímetros. Medía, literalmente, cuánto difería la aceleración entre los dos extremos de cada eje: el tensor de marea de la sección 14, el mismo que mueven las bolas de la tarjeta de la caja. Mark Drinkwater y colaboradores describieron la misión en 2003 (*Space Science Reviews*, 108, 419–432). Con sus datos se construyó el mapa más detallado del campo gravitatorio terrestre de su época y del **geoide**, la superficie a la que se ajustaría el nivel del mar sin corrientes ni mareas.
+
+GOCE es la caja de la herramienta hecha satélite: una caja en caída libre (en órbita) que mide las mareas gravitatorias entre sus paredes. Donde la herramienta calcula micrómetros en diez segundos, GOCE medía diferencias de aceleración de una parte en un billón.
+
+### 20. Más física de los granos
+
+El efecto Janssen es solo una de las sorpresas de los materiales granulares. Dos más ayudan a entender por qué "un grano no es un líquido".
+
+#### 20.1 Las nueces de Brasil
+
+Si se sacude un frasco de frutos secos mezclados, las nueces más grandes terminan arriba. Es el **efecto nuez de Brasil**, que contradice la intuición de que lo pesado se hunde. Anthony Rosato, Katherine Strandburg, Friedrich Prinz y Robert Swendsen lo estudiaron con simulaciones en 1987 (*Physical Review Letters*, 58(10), 1038–1040) con un título directo: *Why the Brazil nuts are on top*. Su explicación: al sacudir, se abren huecos momentáneos debajo de cada partícula; las chicas pueden caer en huecos chicos, pero las grandes necesitan huecos grandes, que son raros. Con cada sacudida, las chicas se cuelan por debajo de las grandes y las empujan hacia arriba.
+
+James Knight, Heinrich Jaeger y Sidney Nagel mostraron en 1993 (*Physical Review Letters*, 70(24), 3728–3731) que en recipientes reales hay otro mecanismo: la vibración genera **corrientes de convección** en el grano, que suben por el centro y bajan pegadas a las paredes en una capa delgada. Las partículas grandes suben con la corriente central pero no caben en la capa de bajada, y quedan arriba. En ese caso, la forma del recipiente y la fricción con sus paredes deciden el resultado: es otra versión de la pregunta de la idea, "¿la forma del recipiente cambia lo que pasa adentro?", con una respuesta afirmativa.
+
+#### 20.2 Segregación en la industria
+
+La segregación por tamaño es un problema práctico serio. En la industria farmacéutica, una mezcla de polvos que se segrega al transportarse produce comprimidos con dosis desiguales. En la minería y la construcción, los acopios de grava y arena se segregan al formarse: las piedras grandes ruedan hasta la base de la pila y las finas se quedan arriba. Los silos que la sección 12 analizó en reposo se segregan al llenarse y al vaciarse, y el material que sale primero no tiene la misma composición que el que sale al final. Jenike y sus sucesores dedicaron buena parte del diseño de tolvas a minimizar ese efecto.
+
+#### 20.3 Un experimento casero más
+
+Junto con el experimento del tubo de arroz de la sección 7, se puede hacer uno de segregación: llenar un frasco transparente con arroz y algunas bolitas o nueces, enterradas en el fondo, taparlo y sacudirlo verticalmente durante un minuto. Las bolitas suben. Si se repite con un frasco de paredes muy lisas y otro con las paredes forradas de papel de lija, se puede observar si la fricción con las paredes cambia la velocidad con que suben, que es lo que predice el mecanismo de convección de Knight, Jaeger y Nagel.
+
+### 21. Del modelo al código
 
 | Concepto | Dónde en el código | Qué número produce |
 |---|---|---|
@@ -402,7 +442,7 @@ console.log(Caja.masaAparente(0.5, p));            // ≈ 6,27 kg
 console.log(Caja.marea({ h: 1, w: 1, T: 10 }));    // acercamiento ≈ 7,71e-5 m
 ```
 
-### 20. Ejercicios para pensar con la herramienta
+### 22. Ejercicios para pensar con la herramienta
 
 1. Con D = 5 cm, ¿qué μ hace falta para que la balanza marque la mitad del peso con H = 20 cm? Resolvelo a mano con la fórmula y comprobalo con los deslizadores.
 2. Un silo real de trigo tiene D = 6 m, μ = 0,4, K = 0,5 y ρ = 780 kg/m³. Calculá λ. ¿A partir de qué altura el fondo deja de notar el grano nuevo?
@@ -411,7 +451,7 @@ console.log(Caja.marea({ h: 1, w: 1, T: 10 }));    // acercamiento ≈ 7,71e-5 m
 5. Subí la caja a la órbita geoestacionaria (unos 35 800 km). ¿Cuánto vale ahí el período de Schuler? Compará con 24 horas y explicá la coincidencia.
 6. Diseñá un experimento para medir K del arroz con un tubo transparente y un sensor de fuerza lateral.
 
-### 21. Glosario
+### 23. Glosario
 
 - **Densidad aparente:** masa de un material granular dividida por el volumen total que ocupa, incluidos los huecos.
 - **Coeficiente de Janssen (K):** cociente entre la presión horizontal y la vertical dentro del grano.
@@ -421,7 +461,7 @@ console.log(Caja.marea({ h: 1, w: 1, T: 10 }));    // acercamiento ≈ 7,71e-5 m
 - **Período de Schuler:** 2π √(R³/GM), unos 84 minutos para la Tierra.
 - **Desvío geodésico:** cómo se separan o se acercan dos trayectorias de caída libre vecinas; en relatividad general lo controla la curvatura de Riemann.
 
-### 22. Conclusión
+### 24. Conclusión
 
 La intuición de que "el recipiente cambia la gravedad" es falsa en sentido literal y verdadera en dos sentidos más interesantes. En un silo, la forma del recipiente decide cuánto del peso del grano llega al fondo: Janssen lo midió en 1895 y la ingeniería lo sigue usando. En una caja cerrada, el tamaño decide si se puede detectar la gravedad desde adentro: Einstein mostró que una caja chica no puede, y las mareas, que son la curvatura del espacio-tiempo, muestran a partir de qué tamaño sí. La herramienta pone números a las dos respuestas y deja abierta una tercera pregunta, la de la percepción, para un experimento distinto.
 
@@ -435,6 +475,7 @@ El paso siguiente natural es empírico: hacer el experimento del tubo de arroz, 
 - Chou, C. W., Hume, D. B., Rosenband, T., & Wineland, D. J. (2010). Optical clocks and relativity. *Science*, 329(5999), 1630–1633. https://doi.org/10.1126/science.1192720
 - Coulomb, C.-A. (1776). Essai sur une application des règles de maximis et minimis à quelques problèmes de statique relatifs à l'architecture. *Mémoires de Mathématique et de Physique présentés à l'Académie Royale des Sciences*, 7, 343–382.
 - Darwin, G. H. (1898). *The Tides and Kindred Phenomena in the Solar System*. Houghton, Mifflin.
+- Drinkwater, M. R., Floberghagen, R., Haagmans, R., Muzi, D., & Popescu, A. (2003). GOCE: ESA's first Earth Explorer Core mission. *Space Science Reviews*, 108, 419–432. https://doi.org/10.1023/A:1026104216284
 - Duran, J. (2000). *Sands, Powders, and Grains: An Introduction to the Physics of Granular Materials*. Springer. ISBN 978-0-387-98656-2.
 - Einstein, A. (1907). Über das Relativitätsprinzip und die aus demselben gezogenen Folgerungen. *Jahrbuch der Radioaktivität und Elektronik*, 4, 411–462.
 - Einstein, A. (1911). Über den Einfluß der Schwerkraft auf die Ausbreitung des Lichtes. *Annalen der Physik*, 35, 898–908. https://doi.org/10.1002/andp.19113401005
@@ -444,16 +485,20 @@ El paso siguiente natural es empírico: hacer el experimento del tubo de arroz, 
 - Jaeger, H. M., Nagel, S. R., & Behringer, R. P. (1996). Granular solids, liquids, and gases. *Reviews of Modern Physics*, 68(4), 1259–1273. https://doi.org/10.1103/RevModPhys.68.1259
 - Janssen, H. A. (1895). Versuche über Getreidedruck in Silozellen. *Zeitschrift des Vereines Deutscher Ingenieure*, 39(35), 1045–1049.
 - Jenike, A. W. (1964). *Storage and Flow of Solids* (Bulletin 123). Utah Engineering Experiment Station, University of Utah.
+- Kater, H. (1818). An account of experiments for determining the length of the pendulum vibrating seconds in the latitude of London. *Philosophical Transactions of the Royal Society of London*, 108, 33–102. https://doi.org/10.1098/rstl.1818.0006
+- Knight, J. B., Jaeger, H. M., & Nagel, S. R. (1993). Vibration-induced size separation in granular media: The convection connection. *Physical Review Letters*, 70(24), 3728–3731. https://doi.org/10.1103/PhysRevLett.70.3728
 - Laplace, P.-S. (1799–1825). *Traité de mécanique céleste* (5 vols.). París: Duprat / Bachelier.
 - Misner, C. W., Thorne, K. S., & Wheeler, J. A. (1973). *Gravitation*. W. H. Freeman. ISBN 978-0-7167-0344-0.
 - Nedderman, R. M. (1992). *Statics and Kinematics of Granular Materials*. Cambridge University Press. ISBN 978-0-521-40435-7.
 - Newton, I. (1687). *Philosophiæ Naturalis Principia Mathematica*. Londres: Royal Society.
 - Pascal, B. (1663). *Traités de l'équilibre des liqueurs et de la pesanteur de la masse de l'air*. París: Guillaume Desprez.
+- Peters, A., Chung, K. Y., & Chu, S. (1999). Measurement of gravitational acceleration by dropping atoms. *Nature*, 400, 849–852. https://doi.org/10.1038/23655
 - Popper, K. (1959). *The Logic of Scientific Discovery*. Hutchinson.
 - Pound, R. V., & Rebka, G. A. (1960). Apparent weight of photons. *Physical Review Letters*, 4(7), 337–341. https://doi.org/10.1103/PhysRevLett.4.337
 - Rankine, W. J. M. (1857). On the stability of loose earth. *Philosophical Transactions of the Royal Society of London*, 147, 9–27. https://doi.org/10.1098/rstl.1857.0003
 - Reynolds, O. (1885). On the dilatancy of media composed of rigid particles in contact. *Philosophical Magazine*, 20(127), 469–481. https://doi.org/10.1080/14786448508627791
 - Roche, É. (1849). La figure d'une masse fluide soumise à l'attraction d'un point éloigné. *Mémoires de l'Académie des sciences de Montpellier*, 1, 243–262.
+- Rosato, A., Strandburg, K. J., Prinz, F., & Swendsen, R. H. (1987). Why the Brazil nuts are on top: Size segregation of particulate matter by shaking. *Physical Review Letters*, 58(10), 1038–1040. https://doi.org/10.1103/PhysRevLett.58.1038
 - Schuler, M. (1923). Die Störung von Pendel- und Kreiselapparaten durch die Beschleunigung des Fahrzeuges. *Physikalische Zeitschrift*, 24, 344–350.
 - Schutz, B. (2009). *A First Course in General Relativity* (2.ª ed.). Cambridge University Press. ISBN 978-0-521-88705-2.
 - Sperl, M. (2006). Experiments on corn pressure in silo cells: Translation and comment of Janssen's paper from 1895. *Granular Matter*, 8(2), 59–65. https://doi.org/10.1007/s10035-005-0224-z
