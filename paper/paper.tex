@@ -1,0 +1,315 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,spanish,es-nodecimaldot,es-noquoting,es-noshorthands,es-tabla]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=2.5cm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{csquotes}
+\usepackage[style=authoryear,backend=biber,maxcitenames=2,mincitenames=1,maxbibnames=10,uniquelist=false,uniquename=false,dashed=false,doi=true,url=true,isbn=false,eprint=true]{biblatex}
+\addbibresource{referencias.bib}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{./}}
+
+% Datos del documento (también los usa paper/web.py)
+\newcommand{\titulo}{Gravedad contenida: el efecto Janssen y las fuerzas de marea como respuestas a qué cambia la forma de un recipiente}
+\newcommand{\tituloen}{Gravity in a box: the Janssen effect and tidal forces as answers to what the shape of a container changes}
+\newcommand{\repositorio}{https://github.com/LoiaconoBruno/gravity-in-a-box}
+\newcommand{\citaclave}{loiacono2026gravedad}
+
+% Resumen, abstract y palabras clave
+\newenvironment{resumen}{\par\noindent\small\textbf{Resumen.}\ }{\par\medskip}
+\newenvironment{abstractEN}{\par\noindent\small\begin{otherlanguage}{english}\textbf{Abstract.}\ }{\end{otherlanguage}\par\medskip}
+\newcommand{\palabrasclave}[1]{\par\noindent{\small\textbf{Palabras clave:} #1}\par\medskip}
+\newcommand{\keywords}[1]{\par\noindent{\small\begin{otherlanguage}{english}\textbf{Keywords:} #1\end{otherlanguage}}\par\medskip}
+
+% Encabezado de preprint en todas las páginas
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\textit{Preprint, documento de trabajo sin revisión por pares}}
+\fancyhead[R]{\footnotesize B.~Loiacono}
+\fancyfoot[C]{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\title{\titulo}
+\author{Bruno Loiacono\\[2pt]\small Estudiante de Física, Universidad de Buenos Aires}
+\date{Noviembre de 2026\\[8pt]\fbox{\small Preprint, documento de trabajo sin revisión por pares}}
+
+% Unidades
+\newcommand{\unid}[1]{\,\mathrm{#1}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{resumen}
+¿La forma de un recipiente cambia cómo actúa la gravedad adentro? Este trabajo separa la pregunta en dos problemas que se pueden resolver con números. El primero es el del silo: en un tubo lleno de grano, la fricción con las paredes desvía parte del peso y la presión en el fondo se satura, según el modelo de Janssen de 1895. Para un tubo de 5~cm de diámetro con 50~cm de arroz, con parámetros de fricción supuestos, la balanza bajo el fondo registra 122,5~g de 785~g. El segundo es el de la caja cerrada: según el principio de equivalencia, una caja chica en caída libre no permite detectar la gravedad, pero el campo real no es uniforme y las fuerzas de marea la delatan. Para una caja de 1~m en la superficie terrestre, $g$ cambia $3{,}14\times10^{-7}$ de piso a techo, y en 10~s de caída dos bolas separadas 1~m se acercan 77~µm en horizontal y se separan 154~µm en vertical. Cada ecuación se deriva con unidades explícitas y se compara con mediciones publicadas. La conclusión es que el recipiente no cambia la gravedad de manera apreciable, pero sí cómo se reparte el peso y cuánto se nota que el campo no es uniforme.
+\end{resumen}
+
+\begin{abstractEN}
+Does the shape of a container change how gravity acts inside it? This paper splits the question into two problems that can be solved with numbers. The first is the silo: in a tube filled with grain, friction against the walls diverts part of the weight and the pressure at the bottom saturates, following Janssen's 1895 model. For a 5~cm wide tube holding 50~cm of rice, with assumed friction parameters, a scale under the bottom reads 122.5~g out of 785~g. The second is the closed box: by the equivalence principle, a small freely falling box cannot detect gravity, but the real field is not uniform and tidal forces give it away. For a 1~m box at the Earth's surface, $g$ changes by $3.14\times10^{-7}$ from floor to ceiling, and in 10~s of free fall two balls 1~m apart approach by 77~µm horizontally and separate by 154~µm vertically. Every equation is derived with explicit units and compared with published measurements. The conclusion is that the container does not change gravity appreciably, but it does change how weight is distributed and how much the non-uniformity of the field can be noticed.
+\end{abstractEN}
+
+\palabrasclave{efecto Janssen; medios granulares; principio de equivalencia; fuerzas de marea; período de Schuler.}
+\keywords{Janssen effect; granular media; equivalence principle; tidal forces; Schuler period.}
+
+\section{Introducción}\label{sec:intro}
+
+La idea que da origen a este trabajo tenía forma de intuición: en un espacio alto y angosto, ¿la gravedad «se siente» distinta?, ¿el recipiente cambia algo de cómo actúa? La pregunta mezcla tres planos: la percepción, es decir, cómo se siente un ambiente; la física de los materiales, o cómo se reparte el peso de algo contenido; y la física del campo gravitatorio, o si el campo depende del recipiente. Para avanzar hay que separarlos. Este trabajo se ocupa de los dos que la física puede contestar con números:
+
+\begin{enumerate}
+\item \textbf{¿La forma del recipiente cambia la gravedad sobre lo que hay adentro?} No, salvo correcciones minúsculas por la propia masa del recipiente. Pero sí cambia \emph{cómo se reparte el peso} cuando el contenido no es un fluido. Es el problema del silo.
+\item \textbf{¿Se puede notar, desde adentro de un recipiente cerrado, que hay gravedad?} Si la caja es chica, no: la gravedad uniforme no se distingue de una aceleración. Pero el campo real nunca es uniforme, y las \emph{mareas} lo delatan. Es el problema de la caja.
+\end{enumerate}
+
+La sección~\ref{sec:antecedentes} resume la física y la historia de los dos problemas. La sección~\ref{sec:modelo} deriva las ecuaciones con unidades explícitas. La sección~\ref{sec:resultados} las aplica a un tubo de arroz y a una caja de 1~m, y compara los órdenes de magnitud con mediciones publicadas. La sección~\ref{sec:discusion} discute los límites de los dos modelos y la parte de la pregunta que la física no contesta.
+
+\section{Antecedentes}\label{sec:antecedentes}
+
+\subsection{La paradoja hidrostática}
+
+En un fluido en reposo la presión es isótropa y solo crece con la profundidad: la fuerza sobre el fondo de un recipiente depende de la altura de la columna y del área del fondo, no de la cantidad de líquido ni de la forma de las paredes. Es la llamada paradoja hidrostática, conocida desde Simon Stevin (1586) y sistematizada por Blaise Pascal. En un líquido, entonces, la forma del recipiente no cambia lo que mide una balanza bajo el fondo si el recipiente es un tubo recto: la balanza ve todo el peso.
+
+\subsection{Por qué un grano no es un líquido}
+
+Un material granular, como arena, arroz o café molido, es un conjunto de partículas sólidas que se tocan y se rozan. A diferencia de un fluido, puede sostener tensiones de corte en reposo: una pila de arena tiene un ángulo de reposo y un vaso de agua no. Desde Coulomb, la resistencia al corte de un suelo se modela con una ley de fricción en la que la tensión tangencial máxima es proporcional a la normal. \textcite{rankine1857} estudió la relación entre la presión horizontal y la vertical en un terreno granular; en un fluido ese cociente vale 1 y en un grano es menor, y depende del ángulo de fricción interna (ecuación~\eqref{eq:rankine}). \textcite{reynolds1885} mostró que un medio granular compacto, para deformarse, tiene que expandirse: la \emph{dilatancia}, una señal de que el comportamiento del grano depende de su historia de compactación.
+
+Las fuerzas dentro de un grano no se reparten de manera pareja. Las mediciones con discos fotoelásticos de \textcite{majmudar2005} muestran que viajan por \emph{cadenas de fuerza}, caminos de granos muy cargados rodeados de granos casi libres. La revisión de \textcite{jaeger1996} resume por qué un medio granular se comporta como sólido, líquido o gas según cómo se lo exija, sin ser ninguno de los tres.
+
+\subsection{Janssen, 1895}
+
+H.~A.~Janssen, un ingeniero alemán que construía silos, llenó modelos de silo con maíz y midió la presión en el fondo con un fondo móvil apoyado en una balanza. Encontró que la presión no crecía linealmente con la altura sino que se saturaba, y propuso el modelo de la sección~\ref{sec:silo}. \textcite{sperl2006} tradujo el artículo al inglés y lo comentó. \textcite{vanel1999} repitieron la medición con mucho cuidado y encontraron que el modelo describe bien el promedio, pero que las fluctuaciones de un llenado a otro son grandes y dependen del procedimiento. Los textos de \textcite{nedderman1992} y \textcite{duran2000} desarrollan el modelo y sus correcciones.
+
+La saturación tiene una consecuencia cotidiana: el caudal de grano por un orificio casi no depende de la altura de la columna. \textcite{beverloo1961} midieron que crece con el diámetro del orificio a la potencia $5/2$ y no con la altura, a diferencia de un líquido, cuyo caudal baja a medida que baja el nivel. Por eso los relojes de arena se hacen con arena.
+
+\subsection{El principio de equivalencia}
+
+\textcite{galilei1638} defendió que todos los cuerpos caen con la misma aceleración en el vacío, cualquiera sea su masa o su composición, y \textcite{newton1687} lo incorporó como la igualdad entre masa inercial y masa gravitatoria. La misión satelital MICROSCOPE confirmó esa igualdad con una precisión del orden de $10^{-15}$ en el cociente de Eötvös \parencite{touboul2022}.
+
+En 1907, Einstein convirtió ese hecho en el \emph{principio de equivalencia}: un observador encerrado en una caja que acelera uniformemente no puede distinguir, con ningún experimento local, esa situación de estar en reposo en un campo gravitatorio uniforme; y un observador en una caja en caída libre no siente gravedad. En 1911 usó el principio para predecir que la luz se curva al pasar cerca del Sol y que los relojes marchan más lento más abajo en un campo gravitatorio \parencite{einstein1911}. La palabra clave es \emph{uniforme}. El campo de la Tierra apunta hacia el centro y se debilita con la distancia, así que el principio vale solo en una región chica y durante un tiempo corto. Como insisten \textcite{misner1973}, la gravedad que no se puede eliminar eligiendo un sistema en caída libre es la marea; en relatividad general, la curvatura del espacio-tiempo.
+
+\subsection{Mareas en el mar y en el cielo}
+
+Las fuerzas que acercan y separan dos objetos en caída libre son las mismas que levantan el mar. \textcite{newton1687} explicó por qué hay dos pleamares por día: la Luna atrae más al océano del lado cercano que al centro de la Tierra, y más al centro que al océano del lado lejano, de modo que se forman dos bultos opuestos. \textcite{darwin1898} desarrolló la teoría de las mareas y su efecto sobre la rotación de la Tierra. Si un cuerpo está sostenido solo por su propia gravedad, la marea puede romperlo: \textcite{asphaug1994} usaron la ruptura del cometa Shoemaker--Levy~9 al pasar cerca de Júpiter para mostrar que era un conjunto de rocas sueltas, otra vez un medio granular sometido a gravedad. Cerca de un agujero negro la marea estira radialmente y comprime lateralmente a lo que cae, la «espaguetización» que populariza \textcite{thorne1994}.
+
+\subsection{Medir diferencias de gravedad}
+
+Las diferencias de $g$ dentro de una habitación ya se miden. \textcite{pound1960} midieron en una torre de 22,5~m el corrimiento gravitatorio de la frecuencia de rayos gamma que predijo Einstein. \textcite{chou2010} detectaron con relojes ópticos la diferencia de ritmo entre dos relojes separados 33~cm en altura. \textcite{peters1999} midieron $g$ dejando caer átomos enfriados con láser en un interferómetro atómico. En órbita, las misiones GRACE \parencite{tapley2004} y GOCE \parencite{drinkwater2003} miden, respectivamente, la distancia entre dos satélites en caída libre y la diferencia de aceleración entre acelerómetros dentro de un mismo satélite: son la caja de este trabajo llevada a escala planetaria.
+
+\section{Modelo}\label{sec:modelo}
+
+Todas las magnitudes están en unidades SI. La tabla~\ref{tab:simbolos} resume la notación. En cada ecuación se indica el chequeo de unidades.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Símbolos y unidades.}
+\label{tab:simbolos}
+\begin{tabular}{@{}llp{0.58\linewidth}@{}}
+\toprule
+Símbolo & Unidad & Significado \\
+\midrule
+$\rho$ & $\mathrm{kg\,m^{-3}}$ & densidad aparente del grano (incluye los huecos) \\
+$g$ & $\mathrm{m\,s^{-2}}$ & aceleración de la gravedad \\
+$D$, $A$ & m, m$^2$ & diámetro y área del tubo, $A = \pi D^2/4$ \\
+$z$, $H$ & m & profundidad desde la superficie libre y altura de llenado \\
+$P$ & Pa & presión vertical media en una sección \\
+$\mu$, $K$ & --- & coeficiente de fricción con la pared y cociente entre presión horizontal y vertical \\
+$\lambda$ & m & longitud de saturación \\
+$GM$ & $\mathrm{m^3\,s^{-2}}$ & parámetro gravitatorio de la Tierra \\
+$r$ & m & distancia al centro de la Tierra \\
+$\omega$ & $\mathrm{s^{-1}}$ & frecuencia de marea, $\omega^2 = GM/r^3$ \\
+$h$, $w$ & m & separación vertical y horizontal inicial de dos bolas \\
+$\xi$ & m & vector de separación entre dos bolas \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{El silo}\label{sec:silo}
+
+Se piensa el tubo como una pila de rebanadas horizontales de espesor $\mathrm{d}z$, con $z$ medida hacia abajo desde la superficie libre. Sobre una rebanada actúan su peso, $\rho g A\,\mathrm{d}z$; la diferencia de presión vertical entre sus caras, $A\,\mathrm{d}P$; y la fricción con la pared. La presión horizontal contra la pared es $KP$, y si la fricción está completamente movilizada, la ley de Coulomb da una fuerza hacia arriba $\mu K P$ por unidad de área de pared, sobre un área $\pi D\,\mathrm{d}z$. El equilibrio vertical es
+\begin{equation}\label{eq:rebanada}
+A\,\mathrm{d}P = \rho g A\,\mathrm{d}z - \mu K P\,\pi D\,\mathrm{d}z .
+\end{equation}
+Cada término es una fuerza: $\mathrm{Pa\cdot m^2} = \mathrm{N}$ y $\mathrm{kg\,m^{-3}\cdot m\,s^{-2}\cdot m^2\cdot m} = \mathrm{N}$. Dividiendo por $A\,\mathrm{d}z$,
+\begin{equation}\label{eq:janssen-dif}
+\frac{\mathrm{d}P}{\mathrm{d}z} = \rho g - \frac{P}{\lambda}, \qquad \lambda = \frac{D}{4\mu K},
+\end{equation}
+donde $\lambda$ tiene unidades de longitud porque $\mu$ y $K$ son adimensionales, y los dos términos de la derecha tienen unidades de $\mathrm{Pa\,m^{-1}}$. Con $P(0) = 0$, la solución es
+\begin{equation}\label{eq:janssen}
+P(z) = \rho g \lambda \left(1 - e^{-z/\lambda}\right).
+\end{equation}
+Para $z \ll \lambda$, $P \approx \rho g z$: cerca de la superficie el grano se comporta como un líquido. Para $z \gg \lambda$, $P \to \rho g \lambda$: el fondo «ve» una columna de altura $\lambda$, por más alto que sea el silo. Si el tubo se apoya aparte y el fondo descansa sobre una balanza, la balanza marca la masa
+\begin{equation}\label{eq:balanza}
+m_{\mathrm{b}} = \frac{P(H)\,A}{g} = \rho \lambda A \left(1 - e^{-H/\lambda}\right),
+\end{equation}
+en kg ($\mathrm{kg\,m^{-3}\cdot m\cdot m^2}$), frente a la masa real $m = \rho A H$. Su cociente, $m_{\mathrm{b}}/m = (\lambda/H)(1 - e^{-H/\lambda})$, depende solo de $H/\lambda$. El resto del peso lo sostienen las paredes: el efecto Janssen redistribuye el peso, no lo hace desaparecer.
+
+Para el coeficiente $K$, la teoría de \textcite{rankine1857} da en el estado activo
+\begin{equation}\label{eq:rankine}
+K = \frac{1 - \sin\varphi}{1 + \sin\varphi},
+\end{equation}
+adimensional, con $\varphi$ el ángulo de fricción interna. Para $\varphi = 30^\circ$, $K = 1/3$.
+
+\subsection{La caja}\label{sec:caja}
+
+El campo de la Tierra es $\mathbf{g}(\mathbf{r}) = -GM\,\mathbf{r}/r^3 = -\nabla\Phi$, con $\Phi = -GM/r$. Si dos partículas en caída libre están en $\mathbf{r}$ y $\mathbf{r} + \boldsymbol{\xi}$, con $|\boldsymbol{\xi}| \ll r$, la diferencia de sus aceleraciones es, a primer orden,
+\begin{equation}\label{eq:marea}
+\ddot\xi_i = -\frac{\partial^2 \Phi}{\partial x_i\,\partial x_j}\,\xi_j .
+\end{equation}
+En un sistema local con el eje $z$ apuntando radialmente hacia afuera, las derivadas segundas de $\Phi$ dan
+\begin{equation}\label{eq:componentes}
+\ddot\xi_x = -\omega^2 \xi_x, \qquad \ddot\xi_y = -\omega^2 \xi_y, \qquad \ddot\xi_z = +2\omega^2 \xi_z, \qquad \omega^2 = \frac{GM}{r^3}.
+\end{equation}
+Las unidades cierran: $GM/r^3$ tiene unidades de $\mathrm{m^3\,s^{-2}/m^3} = \mathrm{s^{-2}}$, y $\omega^2\xi$, de aceleración. Las direcciones horizontales se comprimen y la vertical se estira el doble; la suma de los coeficientes, $-1-1+2 = 0$, es la ecuación de Laplace, $\nabla^2\Phi = 0$, fuera de las masas.
+
+Si dos bolas parten en reposo relativo, separadas $w$ en horizontal o $h$ en vertical, las soluciones de~\eqref{eq:componentes} son
+\begin{equation}\label{eq:soluciones}
+\xi_x(t) = w \cos(\omega t), \qquad \xi_z(t) = h \cosh\!\left(\sqrt2\,\omega t\right).
+\end{equation}
+El acercamiento horizontal es $w\,(1 - \cos\omega t)$ y la separación vertical extra, $h\,[\cosh(\sqrt2\,\omega t) - 1]$. Para $\omega t \ll 1$ valen $\tfrac12 \omega^2 t^2 w$ y $\omega^2 t^2 h$: con $w = h$, la separación vertical es el doble del acercamiento horizontal, otra forma de ver que la traza es cero. Las fórmulas suponen que la caja cae sin rotar respecto de la dirección radial y valen mientras $\omega t \ll 1$.
+
+La diferencia de $g$ entre el piso, a distancia $r$, y el techo, a $r + h$, es
+\begin{equation}\label{eq:dg}
+\frac{\Delta g}{g} = 1 - \frac{r^2}{(r+h)^2} \approx \frac{2h}{r},
+\end{equation}
+adimensional, y el gradiente vertical, $|\partial g/\partial r| = 2GM/r^3 = 2\omega^2$, tiene unidades de $\mathrm{s^{-2}}$. La frecuencia $\omega$ define un período,
+\begin{equation}\label{eq:schuler}
+T_{\mathrm{S}} = \frac{2\pi}{\omega} = 2\pi\sqrt{\frac{r^3}{GM}},
+\end{equation}
+en segundos. Es el período de Schuler, por el ingeniero Max Schuler, que en 1923 mostró que un péndulo de largo igual al radio terrestre no sería perturbado por las aceleraciones del vehículo que lo lleva. Es también el período de una órbita rasante.
+
+\subsection{La misma cuenta en relatividad general}
+
+En relatividad general, la separación $\xi^\mu$ entre dos geodésicas vecinas obedece la ecuación de desvío geodésico,
+\begin{equation}\label{eq:desvio}
+\frac{D^2 \xi^\mu}{d\tau^2} = -R^\mu{}_{\nu\rho\sigma}\, u^\nu \xi^\rho u^\sigma ,
+\end{equation}
+con $R^\mu{}_{\nu\rho\sigma}$ el tensor de Riemann y $u^\nu$ la cuadrivelocidad. En unidades con $c = 1$, en el límite de campo débil y velocidades bajas, $R^i{}_{0j0} = \partial_i\partial_j\Phi$ y~\eqref{eq:desvio} se reduce a~\eqref{eq:marea} \parencite{schutz2009}. Las fórmulas newtonianas de la caja calculan, entonces, la manifestación de baja velocidad de la curvatura del espacio-tiempo.
+
+\subsection{La masa del recipiente}
+
+El recipiente también atrae. Dentro de una cáscara esférica uniforme el campo de la cáscara es nulo, por el teorema de la cáscara de \textcite{newton1687}, pero dentro de un tubo no. En el centro de uno de los extremos de una cáscara cilíndrica de radio $a$, largo $L$ y densidad superficial $\sigma$, sumando los anillos de masa $2\pi a\sigma\,\mathrm{d}z$ a distancia axial $z$, el campo axial es
+\begin{equation}\label{eq:cascara}
+g_{\mathrm{p}} = 2\pi G \sigma a \left(\frac{1}{a} - \frac{1}{\sqrt{a^2 + L^2}}\right),
+\end{equation}
+con unidades $\mathrm{m^3\,kg^{-1}\,s^{-2}\cdot kg\,m^{-2}\cdot m\cdot m^{-1}} = \mathrm{m\,s^{-2}}$.
+
+\section{Resultados}\label{sec:resultados}
+
+Todas las cifras de esta sección salen de \texttt{paper/figuras/generar.js}. Las constantes son las de la NASA para la Tierra y la Luna \parencite{nasa_tierra,nasa_luna}, $GM = 3{,}986\times10^{14}\unid{m^3\,s^{-2}}$ y $r = 6{,}371\times10^{6}\unid{m}$, y el valor de CODATA para $G$ \parencite{codata_G}. Los parámetros del arroz, $\rho = 800\unid{kg\,m^{-3}}$, $\mu = 0{,}4$ y $K = 0{,}4$, son supuestos típicos, no mediciones: dependen del grano, del tubo, de la humedad y de cómo se llena.
+
+\subsection{Un tubo de arroz}
+
+Un tubo de $D = 5\unid{cm}$ lleno hasta $H = 50\unid{cm}$ tiene un área de $1{,}963\times10^{-3}\unid{m^2}$ y contiene 785~g de arroz. La longitud de saturación es $\lambda = 0{,}05/0{,}64\unid{m} = 7{,}81\unid{cm}$, así que $H/\lambda = 6{,}4$ y el factor $1 - e^{-H/\lambda}$ vale 0,998: el fondo está saturado. La balanza marca $m_{\mathrm{b}} = 122{,}5\unid{g}$. Las paredes sostienen el 84,4~\% del peso. La presión en el fondo es $\rho g \lambda = 613\unid{Pa}$, frente a los 3924~Pa que habría bajo 50~cm de un líquido de la misma densidad (figura~\ref{fig:presion}).
+
+Con un tubo de 20~cm, $\lambda = 31{,}25\unid{cm}$ y la balanza marca 6,27~kg de 12,57~kg: cuanto más ancho el tubo, menos pared por unidad de volumen y menos peso desviado (figura~\ref{fig:fraccion}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figuras/presion}
+\caption{Presión vertical en función de la profundidad, según la ecuación~\eqref{eq:janssen}, para tres diámetros de tubo, y la recta de un líquido de la misma densidad. Parámetros supuestos del arroz: $\rho = 800\unid{kg\,m^{-3}}$, $\mu = K = 0{,}4$.}
+\label{fig:presion}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figuras/fraccion}
+\caption{Fracción del peso del grano que registra una balanza bajo el fondo, $m_{\mathrm{b}}/m$, en función de la altura de llenado, para tres diámetros.}
+\label{fig:fraccion}
+\end{figure}
+
+\subsection{Una caja de 1 m}
+
+En la superficie, $g = GM/r^2 = 9{,}82\unid{m\,s^{-2}}$ y $\omega^2 = 1{,}54\times10^{-6}\unid{s^{-2}}$, así que $\omega = 1{,}24\times10^{-3}\unid{s^{-1}}$ y el período de Schuler es de 84,35~min. Entre el piso y el techo de una caja de 1~m, $\Delta g/g = 3{,}14\times10^{-7}$. Después de 10~s de caída libre, dos bolas separadas 1~m en horizontal se acercan 77,07~µm, y dos separadas 1~m en vertical se alejan 154,1~µm: el doble, como predice la traza nula (figura~\ref{fig:tiempo}).
+
+A 400~km de altura, la altitud típica de la Estación Espacial Internacional, $g$ todavía vale $8{,}69\unid{m\,s^{-2}}$ y la marea es un 17~\% más débil: el acercamiento en 10~s baja a 64,2~µm. La «ingravidez» de los astronautas no es ausencia de gravedad sino caída libre; lo que queda es la marea residual.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figuras/marea-tiempo}
+\caption{Cambio de separación entre dos bolas separadas inicialmente 1~m, en caída libre en la superficie terrestre, según la ecuación~\eqref{eq:soluciones}, con sus aproximaciones de tiempos cortos. Las fórmulas son lineales en $\xi/r$ y suponen $\omega t \ll 1$; más allá de $t \sim 1/\omega \approx 800\unid{s}$ describen el movimiento relativo en un sistema en órbita, no una caída desde el reposo.}
+\label{fig:tiempo}
+\end{figure}
+
+\subsection{Cuándo la forma de la caja sí importa}
+
+La tabla~\ref{tab:tamanos} y la figura~\ref{fig:gradiente} comparan la aproximación de primer orden de la ecuación~\eqref{eq:dg} con el valor exacto. Hasta unos 10~km la diferencia es menor que el 1~\%; para una caja de 1000~km, la aproximación da 0,314 y el valor exacto 0,253. A esas escalas la forma de la caja importa de verdad: una caja alta y angosta ve un campo que cambia mucho a lo largo, y una chata y ancha ve sobre todo la convergencia lateral.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Diferencia relativa de $g$ entre piso y techo según la altura de la caja.}
+\label{tab:tamanos}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Altura $h$ & $2h/r$ & $1 - r^2/(r+h)^2$ \\
+\midrule
+1~m & $3{,}14\times10^{-7}$ & $3{,}14\times10^{-7}$ \\
+100~m & $3{,}14\times10^{-5}$ & $3{,}14\times10^{-5}$ \\
+10~km & $3{,}14\times10^{-3}$ & $3{,}13\times10^{-3}$ \\
+1000~km & 0,314 & 0,253 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figuras/gradiente}
+\caption{Diferencia relativa de $g$ entre piso y techo en función de la altura de la caja: aproximación de primer orden y valor exacto, ecuación~\eqref{eq:dg}.}
+\label{fig:gradiente}
+\end{figure}
+
+\subsection{Órdenes de magnitud}
+
+Las mismas fórmulas ponen en escala varias mediciones:
+
+\begin{itemize}
+\item El gradiente vertical en la superficie es $2\omega^2 = 3{,}08\times10^{-6}\unid{s^{-2}}$, unos 3083~eötvös ($1\unid{E} = 10^{-9}\unid{s^{-2}}$). Es lo que miden, componente por componente, los gradiómetros de GOCE.
+\item La aceleración de marea que produce la Luna en la superficie terrestre, $2 G M_{\mathrm{L}} r / d^3$ con $M_{\mathrm{L}} = 7{,}346\times10^{22}\unid{kg}$ y $d = 3{,}844\times10^{8}\unid{m}$, es $1{,}1\times10^{-6}\unid{m\,s^{-2}}$, unas diez millonésimas de $g$: el mismo orden que la diferencia entre el piso y el techo de una caja de 3~m.
+\item En la torre de 22,5~m de Pound y Rebka, el corrimiento relativo de frecuencia esperado es $gh/c^2 = 2{,}46\times10^{-15}$.
+\item Para un silo de hormigón de radio $a = 3\unid{m}$, largo $L = 20\unid{m}$ y paredes de 20~cm con densidad supuesta de $2400\unid{kg\,m^{-3}}$, la ecuación~\eqref{eq:cascara} da $g_{\mathrm{p}} = 1{,}7\times10^{-7}\unid{m\,s^{-2}}$, unas $2\times10^{-8}\,g$. Es el sentido literal en que el recipiente cambia la gravedad adentro: no se siente, aunque un gravímetro como el de \textcite{peters1999} podría registrarlo. \textcite{cavendish1798} necesitó una balanza de torsión para medir atracciones de ese orden entre esferas de plomo.
+\end{itemize}
+
+\section{Discusión y limitaciones}\label{sec:discusion}
+
+\subsection{Qué dicen los dos modelos}
+
+La curva del silo no dice que la gravedad sea menor dentro del tubo: cada grano pesa lo mismo. Dice por dónde baja el peso, y una parte va a las paredes por fricción. Si el tubo colgara de un dinamómetro, ese dinamómetro registraría lo que falta en la balanza. En un fluido, por viscoso que sea, la presión en reposo es isótropa y no hay esfuerzos de corte: la miel tarda en acomodarse, pero después la balanza marca todo su peso. La saturación es propia de los materiales con fricción interna.
+
+Los números de la caja tampoco dicen que la no uniformidad del campo sea perceptible en una habitación: son micrómetros en diez segundos. Sirven para ver de qué orden es el efecto y a partir de qué tamaño domina. Las dos bolas no se acercan porque se atraigan entre sí (la atracción entre dos masas de 1~kg a 1~m es de unos $7\times10^{-11}\unid{N}$): se acercan porque cada una cae hacia el centro de la Tierra por su propia línea, y las líneas convergen.
+
+\subsection{Límites del modelo de Janssen}
+
+El modelo supone presión uniforme en cada sección, $K$ constante y fricción completamente movilizada contra las paredes. Ninguna de las tres se cumple siempre: la presión es mayor en el centro que contra la pared, $K$ depende de la compactación y, si el grano no deslizó contra las paredes, la fricción es menor que $\mu K P$ y la saturación más débil. \textcite{vanel1999} muestran que el modelo describe el promedio de muchos llenados, no uno en particular. Además, el modelo es estático: al vaciar un silo aparecen sobrepresiones, arcos y flujo de embudo, que requieren otra teoría \parencite{nedderman1992}. Por último, los valores de $\mu$ y $K$ usados aquí son supuestos; las cifras de la sección~\ref{sec:resultados} muestran el orden del efecto, no una predicción para un arroz y un tubo concretos.
+
+\subsection{Límites de las fórmulas de marea}
+
+Las ecuaciones~\eqref{eq:componentes} y~\eqref{eq:soluciones} son de primer orden en $\xi/r$ y suponen una caja que cae sin rotar respecto de la dirección radial. Valen para $\omega t \ll 1$ y para cajas chicas frente al radio terrestre; la tabla~\ref{tab:tamanos} muestra dónde empieza a fallar la aproximación lineal. Tampoco incluyen el achatamiento de la Tierra ni las variaciones locales de densidad, que son justamente lo que buscan medir GRACE y GOCE.
+
+\subsection{La forma del recipiente en un grano que se mueve}
+
+En un grano vibrado, la forma del recipiente y la fricción con sus paredes sí cambian lo que pasa adentro. Si se sacude un frasco de frutos secos, las nueces grandes terminan arriba. \textcite{rosato1987} lo explicaron por los huecos que se abren al sacudir, en los que caben las partículas chicas y no las grandes; \textcite{knight1993} mostraron que en recipientes reales la vibración genera corrientes de convección que suben por el centro y bajan pegadas a las paredes, donde las partículas grandes no caben. Es otra respuesta afirmativa, para un medio granular, a la pregunta de si la forma del recipiente cambia lo que pasa adentro.
+
+\subsection{La parte que la física no contesta}
+
+La idea original también preguntaba cómo \emph{se siente} un espacio alto o angosto. Eso no es física del campo sino psicología de la percepción. \textcite{gibson1979} sostuvo que percibimos el espacio a partir de la información del entorno, como los gradientes de textura y el horizonte. \textcite{witkin1948} mostraron que un marco visual inclinado desvía el juicio de la vertical. En la percepción de la vertical intervienen los otolitos del oído interno, que son acelerómetros y, como tales, no distinguen gravedad de aceleración: el principio de equivalencia en biología. Un recipiente puede cambiar, entonces, lo que \emph{creemos} que hace la gravedad, aunque no cambie lo que hace.
+
+\section{Conclusiones y trabajo futuro}\label{sec:conclusiones}
+
+La intuición de que el recipiente cambia la gravedad es falsa en sentido literal, salvo por correcciones del orden de $10^{-8}\,g$, y verdadera en dos sentidos más interesantes. En un silo, la forma del recipiente decide cuánto del peso del grano llega al fondo: con 50~cm de arroz en un tubo de 5~cm, la balanza registra menos de una sexta parte del peso. En una caja cerrada, el tamaño decide si se puede detectar la gravedad desde adentro: una caja de 1~m registra diferencias de $g$ de tres partes en diez millones, y a partir de cientos de kilómetros la forma de la caja domina.
+
+El paso siguiente es empírico. Se propone un experimento casero: un tubo rígido de 4 a 5~cm de diámetro, sostenido aparte; un disco suelto como fondo, apoyado en una balanza de cocina; y arroz agregado de a 100~g, anotando la lectura en cada paso. Ajustando $\mu K$ para que la ecuación~\eqref{eq:balanza} siga los puntos se obtiene una medición propia de $\lambda$, que se puede comparar con las fluctuaciones que encontraron \textcite{vanel1999}. Una segunda extensión es un experimento de percepción de la vertical en espacios de distintas proporciones.
+
+\section*{Declaración de uso de IA}
+
+Este trabajo se redactó con asistencia de Claude (Anthropic), un modelo de lenguaje, a partir de una guía previa del autor. El modelo propuso la estructura, la redacción, los chequeos de unidades y el script que genera las figuras; el alcance y las decisiones son del autor, que es responsable del contenido. Las referencias se verificaron contra Crossref, Open Library y las páginas citadas con \texttt{paper/verificar\_bib.py}, y todas las cifras de la sección~\ref{sec:resultados} salen de \texttt{paper/figuras/generar.js}.
+
+\printbibliography
+
+\end{document}
